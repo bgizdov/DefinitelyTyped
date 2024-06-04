@@ -24,7 +24,7 @@ concurrency:
 jobs:
   setup-matrix:
     runs-on: ubuntu-latest
-    if: github.repository == 'DefinitelyTyped/DefinitelyTyped'
+    if: github.repository == 'bgizdov/DefinitelyTyped'
 
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
@@ -54,7 +54,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    if: github.repository == 'DefinitelyTyped/DefinitelyTyped'
+    if: github.repository == 'bgizdov/DefinitelyTyped'
     needs: setup-matrix
 
     strategy:
@@ -125,7 +125,7 @@ jobs:
 
   dangerbot:
     runs-on: ubuntu-latest
-    if: github.repository == 'DefinitelyTyped/DefinitelyTyped' && github.event_name == 'pull_request'
+    if: github.repository == 'bgizdov/DefinitelyTyped' && github.event_name == 'pull_request'
 
     needs:
       - test
@@ -165,7 +165,7 @@ jobs:
 
   scripts:
     runs-on: ubuntu-latest
-    if: github.repository == 'DefinitelyTyped/DefinitelyTyped'
+    if: github.repository == 'bgizdov/DefinitelyTyped'
 
     steps:
       - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6

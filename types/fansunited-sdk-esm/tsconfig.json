@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "lib": [ "esnext", "dom" ],
+        "outDir": "lib",
+        "noImplicitAny": false,
+        "allowJs": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "declaration": true,
+        "esModuleInterop": true
+      },
+    "files": [
+        "index.d.ts",
+        "fans-united-sdk-tests.ts"
+    ]
+}

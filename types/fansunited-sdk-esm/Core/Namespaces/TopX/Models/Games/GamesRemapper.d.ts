@@ -1,0 +1,35 @@
+import GameModel from "./GameModel";
+import GamesListModel from "./GamesListModel";
+import GamesMatchQuizListModel from "../../../MatchQuiz/Models/Games/GamesMatchQuizListModel";
+import GamesTopXListModel from "./GamesTopXListModel";
+import PaginationModel from "../../../../Global/Models/Pagination/PaginationModel";
+import GameMarketsResults from "../../../MatchQuiz/Models/GameMarketsResults/GameMarketsResults";
+import ContestWinners from "./Winners/ContestWinners";
+import GameByIdModel from "./GameByIdModel";
+export default class GamesRemapper {
+    remapPaginatedGames: (paginatedGames: any) => PaginationModel;
+    remapGamesListResponse: (gamesList: any) => GamesListModel;
+    remapGameByIdResponse: (gameById: any) => GameByIdModel;
+    private remapFixturesResponse;
+    remapPaginatedUserTopXEditions: (userGameEditions: any) => PaginationModel;
+    remapUserTopXEditionsResponse: (gamesList: any) => GamesTopXListModel;
+    private remapTopXFixturesResponse;
+    remapPaginatedUserMathQuizEditions: (userGameEditions: any) => PaginationModel;
+    remapUserMatchQuizEditionsResponse: (gamesList: any) => GamesMatchQuizListModel;
+    private remapMatchQuizFixturesResponse;
+    remapPaginatedGameResults: (gameResultsResponse: any) => PaginationModel;
+    remapGameResults: (gameResults: any) => GameModel;
+    remapGameMarketsResults: (gameMarketsResultsResponse: any) => GameMarketsResults;
+    remapContestWinners: (contestWinnersResponse: any) => ContestWinners;
+    private remapUserListWinners;
+    private remapTieBreakers;
+    private remapMarketsResults;
+    private remapMarketsResultsMatchStatus;
+    private remapMarketResult;
+    private deleteUnusefulField;
+    private isPlayerMarketWithNoResult;
+    private remapResults;
+    private remapTiebreaker;
+    private remapTimeTiebreaker;
+    private remapRelated;
+}

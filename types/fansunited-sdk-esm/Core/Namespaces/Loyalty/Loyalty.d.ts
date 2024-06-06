@@ -1,0 +1,35 @@
+import SDKConfigurationModel from "../../Configurator/Models/SDKConfiguraitonModel";
+import PaginationModel from "../../Global/Models/Pagination/PaginationModel";
+import LoyaltyFilters from "./Models/Filters/LoyaltyFilters";
+import ClientBadges from "./Models/Badges/ClientBadges";
+import { FeaturesConfigModels } from "../../Global/Types/GlobalTypes";
+import RankingsFilters from "./Models/Filters/RankingsFilters";
+import HighestSuccessRateModel from "./Models/HighestSuccessRate/HighestSuccessRateModel";
+import ContestWinners from "../TopX/Models/Games/Winners/ContestWinners";
+import EntitiesFollowsFilters from "./Models/Filters/EntitiesFollowsFilters";
+import EntitiesFollows from "./Models/EntitiesFollows/EntitiesFollows";
+import TemplateByIdModel from "./Models/Template/TemplateByIdModel";
+import HighestSuccessRateFilters from "./Models/Filters/HighestSuccessRateFilters";
+import TemplateFilters from "./Models/Filters/TemplateFilters";
+import LeagueLeaderboardFilters from "./Models/Filters/LeagueLeaderboardFilters";
+export default class Loyalty {
+    private clientHttps;
+    private profileHttps;
+    private loyaltyHttps;
+    private loyaltyFacade;
+    private localCache;
+    constructor(config: SDKConfigurationModel);
+    getConfig: () => Promise<FeaturesConfigModels>;
+    getClientBadges: () => Promise<ClientBadges>;
+    getTemplates: (filters?: TemplateFilters, disableCache?: boolean) => Promise<PaginationModel>;
+    getTemplateById: (templateId: string, disableCache?: boolean) => Promise<TemplateByIdModel>;
+    getLeaderboard: (templateId: string, filters?: LoyaltyFilters, disableCache?: boolean) => Promise<PaginationModel>;
+    getLeaderboardForGame: (gameId: string, filters?: LoyaltyFilters, disableCache?: boolean) => Promise<PaginationModel>;
+    getLeaderboardForLeague: (leagueId: string, filters?: LeagueLeaderboardFilters) => Promise<any>;
+    getOwnRankings: (filters?: RankingsFilters, disableCache?: boolean) => Promise<import("../Football/Models/Pagination/FootballPaginationModel").default>;
+    getUserRankings: (userId: string, filters?: RankingsFilters, disableCache?: boolean) => Promise<import("../Football/Models/Pagination/FootballPaginationModel").default>;
+    getHighestSuccessRate: (filters?: HighestSuccessRateFilters, disableCache?: boolean) => Promise<HighestSuccessRateModel[]>;
+    getTemplateWinners: (templateId: string, disableCache?: boolean) => Promise<ContestWinners>;
+    getEntitiesFollows: (filters: EntitiesFollowsFilters, disableCache?: boolean) => Promise<EntitiesFollows>;
+    getTemplateMatches: (templateId: string, groupId?: string, disableCache?: boolean) => Promise<any[]>;
+}

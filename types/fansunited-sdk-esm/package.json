@@ -1,0 +1,21 @@
+{
+    "private": true,
+    "name": "@types/fansunited-sdk-esm",
+    "version": "1.64.9999",
+    "projects": [
+        "https://www.npmjs.com/package/fansunited-sdk-esm"
+    ],
+    "devDependencies": {
+        "@types/fansunited-sdk-esm": "workspace:."
+    },
+    "owners": [
+        {
+            "name": "Viktor Yordanov",
+            "githubUsername": "viktoryooo"
+        },
+        {
+            "name": "Borislav Gizdov",
+            "githubUsername": "bgizdov"
+        }
+    ]
+}

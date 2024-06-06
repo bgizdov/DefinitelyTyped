@@ -1,0 +1,38 @@
+import SDKConfigurationModel from "../../../Configurator/Models/SDKConfiguraitonModel";
+import MiniGamesHttps from "../../../Https/MiniGamesHttps";
+import IdMappingService from "../../../IdMapping/IdMappingService";
+import { EitherOrParticipationCallback } from "../Interfaces/MiniGamesInterfaces";
+import EitherOrParticipationModel from "../Models/EitherOr/Participation/EitherOrParticipationModel";
+import EitherOrParticipationRequestModel from "../Models/EitherOr/Participation/EitherOrParticipationRequestModel";
+import EitherOrResultsModel from "../Models/EitherOr/Results/EitherOrResultsModel";
+import MiniGamesFilters from "../Models/Filters/MiniGamesFilters";
+import MiniGamesValidator from "../Validator/MiniGamesValidator";
+export default class MiniGamesService {
+    private idSchema;
+    readonly idMapping: IdMappingService;
+    readonly validator: MiniGamesValidator;
+    readonly https: MiniGamesHttps;
+    readonly entityTypes: string[];
+    private readonly profile;
+    private readonly football;
+    private eitherOrTime;
+    private participationStartTimestamp;
+    private countdownTimer;
+    private intervalId;
+    private currentPairId;
+    constructor(config: SDKConfigurationModel);
+    finalizeMiniGamesFilters: (filters: MiniGamesFilters) => Promise<void>;
+    setProfileModelsForEitherOrStandings: (eitherOrResults: EitherOrResultsModel) => Promise<EitherOrResultsModel>;
+    defaultEitherOrParticipation: (eitherOrId: string, participation: EitherOrParticipationRequestModel | null) => Promise<EitherOrParticipationModel>;
+    handleEitherOrParticipationWithCallback: (eitherOrId: string, participation: EitherOrParticipationRequestModel | null, onEitherOrParticipationCallbacks: EitherOrParticipationCallback) => Promise<EitherOrParticipationModel>;
+    private initialEitherOrParticipationWithCallback;
+    private eitherOrParticipationWithCallback;
+    private setCurrentPairId;
+    private handleEitherOrParticipationCallbackInterface;
+    private createNewParticipation;
+    private resetCallbackParticipationTimers;
+    private resetDefaultParticipationTimers;
+    setContextTagsModels: (miniGames: any[]) => Promise<void>;
+    private extractEntityIdsFromTags;
+    private setModelsForContextTags;
+}

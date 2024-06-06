@@ -1,0 +1,30 @@
+import ImagesModel from "../../../../Global/Models/Images/ImagesModel";
+import RelatedEntity from "../../../../Global/Models/Related/RelatedEntity";
+import { LeaderboardStatus } from "../../Types/LoyaltyTypes";
+import TemplateGroups from "./TemplateGroups";
+export default class TemplateModel {
+    id: string;
+    name: string;
+    description: string;
+    type: string;
+    fromDate: string;
+    toDate: string;
+    markets: string[];
+    teamIds: string[];
+    matchIds: string[];
+    groups: TemplateGroups[];
+    gameIds: string[];
+    gameTypes: string[];
+    competitionIds: string[];
+    excludedProfileIds: string[];
+    rules: string;
+    labels: Record<string, string>;
+    customFields: Record<string, string>;
+    flags: string[];
+    images: ImagesModel;
+    status: LeaderboardStatus;
+    automaticallyChangeStatus: boolean;
+    createdAt: string;
+    updatedAt: string;
+    related: RelatedEntity[];
+}

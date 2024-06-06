@@ -1,0 +1,30 @@
+import SDKConfigurationModel from "../../Configurator/Models/SDKConfiguraitonModel";
+import PredictionResponseModel from "../Predictor/Models/Predictions/PredictionResponseModel";
+import GameModel from "./Models/Games/GameModel";
+import GamesFilters from "./Models/Games/GamesFilters";
+import PaginationModel from "../../Global/Models/Pagination/PaginationModel";
+import TopXPredictionRequestModel from "./Models/Prediction/TopXPredictionRequestModel";
+import PredictionsFilters from "../Predictor/Models/Predictions/PredictionsFilters";
+import GameMarketsResults from "../MatchQuiz/Models/GameMarketsResults/GameMarketsResults";
+import MainFiltersBQ from "../../Global/Models/Filters/MainFiltersBQ";
+import ContestWinners from "./Models/Games/Winners/ContestWinners";
+import GameByIdModel from "./Models/Games/GameByIdModel";
+export default class TopX {
+    private topXFacade;
+    private idMapping;
+    constructor(config: SDKConfigurationModel);
+    getConfig: () => Promise<import("../../Global/Types/GlobalTypes").FeaturesConfigModels>;
+    getGames: (filters?: GamesFilters, disableCache?: boolean) => Promise<PaginationModel>;
+    getGameById: (gameId: string, disableCache?: boolean) => Promise<GameByIdModel>;
+    getGamePredictions: (gameId: string, filters?: PredictionsFilters, disableCache?: boolean) => Promise<PaginationModel>;
+    getGameResults: (gameId: string, filters?: MainFiltersBQ, disableCache?: boolean) => Promise<PaginationModel>;
+    getCurrentGameResults: (disableCache?: boolean) => Promise<GameModel>;
+    play: (topXPrediction: TopXPredictionRequestModel) => Promise<PredictionResponseModel>;
+    delete: (predictionGameId: string) => Promise<boolean>;
+    getMyGameEditions: (filters?: MainFiltersBQ, disableCache?: boolean) => Promise<PaginationModel>;
+    getMyGamePrediction: (gameId: string) => Promise<PredictionResponseModel>;
+    getUserGameEditions: (userId: string, filters?: MainFiltersBQ, disableCache?: boolean) => Promise<PaginationModel>;
+    getUserGamePrediction: (userId: string, gameId: string, disableCache?: boolean) => Promise<PredictionResponseModel>;
+    getMarketsResultsForGame: (gameId: string, disableCache?: boolean) => Promise<GameMarketsResults>;
+    getGameWinners: (gameId: string, disableCache?: boolean) => Promise<ContestWinners>;
+}

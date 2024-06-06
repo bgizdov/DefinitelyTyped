@@ -1,0 +1,31 @@
+import SDKConfigurationModel from "../../Configurator/Models/SDKConfiguraitonModel";
+import InvitationFilters from "./Models/Filters/InvitationFilters";
+import MyLeaguesFilters from "./Models/Filters/MyLeaguesFilters";
+import PrivateLeagueFilters from "./Models/Filters/PrivateLeagueFilters";
+import PrivateLeaguePostsFilters from "./Models/Filters/PrivateLeaguePostsFilters";
+import PrivateLeaguePredictionsFilters from "./Models/Filters/PrivateLeaguePredictionsFilters";
+import PrivateLeagueParamCreateBody from "./Models/PrivateLeagueParamCreateBody";
+import PrivateLeagueParamUpdateBody from "./Models/PrivateLeagueParamUpdateBody";
+export default class PrivateLeagues {
+    private privateLeaguesFacade;
+    constructor(config: SDKConfigurationModel);
+    create: (body: PrivateLeagueParamCreateBody) => Promise<import("./Models/PrivateLeagueFullModel").default>;
+    update: (leagueId: string, body: PrivateLeagueParamUpdateBody) => Promise<import("./Models/PrivateLeagueFullModel").default>;
+    updateTemplate: (leagueId: string, newTemplateId: string, oldTemplateName: string) => Promise<import("./Models/PrivateLeagueFullModel").default>;
+    delete: (leagueId: string) => Promise<boolean>;
+    getById: (leagueId: string, disableCache?: boolean) => Promise<import("./Models/PrivateLeagueFullModel").default>;
+    getMyLeagues: (filters?: MyLeaguesFilters) => Promise<any>;
+    invite: (leagueId: string, profiles: string[]) => Promise<string[]>;
+    deleteInvitation: (leagueId: string, profiles: string[]) => Promise<boolean>;
+    accept: (leagueId: string) => Promise<import("./Models/AcceptPrivateLeagueModel").default>;
+    reject: (leagueId: string) => Promise<import("./Models/AcceptPrivateLeagueModel").default>;
+    banUsers: (leagueId: string, profiles: string[]) => Promise<string[]>;
+    unbanUsers: (leagueId: string, profiles: string[]) => Promise<string[]>;
+    join: (code: string) => Promise<import("./Models/AcceptPrivateLeagueModel").default>;
+    leave: (leagueId: string) => Promise<string[]>;
+    getMyLeaguesStandings: (filters?: PrivateLeagueFilters) => Promise<any>;
+    getInvitations: (filters?: InvitationFilters) => Promise<import("./Models/PrivateLeaguesModel").default>;
+    getReportedPosts: (leagueId: string, filters?: PrivateLeaguePostsFilters) => Promise<import("../Discussions/Models/PostsDiscussionBasicModel").default | import("../Discussions/Models/PostsFullModel").default>;
+    getPredictions: (leagueId: string, filters?: PrivateLeaguePredictionsFilters) => Promise<import("./Models/PrivateLeaguePredictionsModel").default>;
+    moderatePost: (postId: string, moderationReason: string) => Promise<import("../Discussions/Models/PostByIdBasicModel").default>;
+}
